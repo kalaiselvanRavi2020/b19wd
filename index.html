@@ -21,7 +21,7 @@
              name : document.getElementById("name").value,
                 age:document.getElementById("age").value
             }
-            await fetch("http://localhost:3000/student",{
+            await fetch("https://b19wday.herokuapp.com/student",{
                 method:"POST",
                 body:JSON.stringify(data),
                 headers:{
@@ -31,7 +31,7 @@
             alert("done");
         }
         async function getstudents(){
-            let studentData = await fetch("http://localhost:3000/students");
+            let studentData = await fetch("https://b19wday.herokuapp.com/students");
             let studentDetails = await studentData.json()
             studentDetails.forEach(student=>{
                 let li = document.createElement("li");

@@ -4,7 +4,7 @@ app.use(express.json());
 
 const cors = require('cors');
 app.use(cors({
-    origin:"http://127.0.0.1:5500"
+    origin:"https://cranky-stonebraker-beedd0.netlify.app"
 }))
 
 const mongodb = require('mongodb');
