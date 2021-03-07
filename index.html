@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student details</title>
+</head>
+<body>
+    <ul class="" id="root"></ul>
+    <form onsubmit="addstudent()">
+    <label>name</label><input type ="text"   class="" id = "name"required /><br>
+    <label>age</label><input type ="text"  class="" id ="age" maxlength=3 required  /><br>
+    <input type ="submit" value ="Submit" class="">
+</form>
+
+
+<script>
+        async function addstudent(){
+            let data ={
+             name : document.getElementById("name").value,
+                age:document.getElementById("age").value
+            }
+            await fetch("http://localhost:3000/student",{
+                method:"POST",
+                body:JSON.stringify(data),
+                headers:{
+                    'content-Type':'application/json'
+                }
+            })
+            alert("done");
+        }
+        async function getstudents(){
+            let studentData = await fetch("http://localhost:3000/students");
+            let studentDetails = await studentData.json()
+            studentDetails.forEach(student=>{
+                let li = document.createElement("li");
+                li.innerHTML=[student.name,student.age]
+                document.getElementById("root").appendChild(li)
+            });
+        }
+        getstudents();
+    </script>
+</body>
+</html>
